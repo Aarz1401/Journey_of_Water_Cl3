@@ -52,7 +52,30 @@ html, body{
     overflow:none;
 }
 
-/*Image Overlay classes*/
+/*Progress Bar*/
+.progress-bar-container {
+    width: 80%;
+    height:20px;
+    border-radius: 50px;
+    background-color: #e0e0df;
+    display:none;
+    top:90%;
+    position: relative;
+    left:3%;
+}
+
+.progress-bar {
+    width: 0;
+    height: 20px;
+    
+    background-color: #76c7c0;
+    border-radius: 50px;
+    transition: width 0.4s ease-in-out;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+
 
 
 
