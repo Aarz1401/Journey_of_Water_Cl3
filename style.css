@@ -5,19 +5,31 @@ html, body{
     font-family: 'Roboto', sans-serif;
 }
 
-.mainContainer{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    position:relative;
+.mainContent{
+    background:white;
 }
-
-.imageText {
+.header{
+    text-align: center;
+}
+.imageText1{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white; /* Change this to suit your image */
 }
+
+.images{
+    margin-top:20px;
+    margin-bottom:20px;
+    display:flex;
+    position:relative;
+    width: 100%;
+    padding: 0;
+    background:url("img/water_image.jpg") no-repeat center center;
+    background-size: cover;
+    height:100%;
+    overflow:none;
+}
+
+/*Image Overlay classes*/
