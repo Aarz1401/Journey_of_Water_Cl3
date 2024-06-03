@@ -2,21 +2,41 @@ html, body{
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family:'Montseirat', sans-serif;
 }
 
 .mainContent{
     background:white;
 }
-.header{
-    text-align: center;
-}
+
+/*Fonts*/
+@font-face {
+    font-family: myFirstFont;
+    src: url(fonts/Artfully\ Regular.ttf);
+  }
+
 .imageText1{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white; /* Change this to suit your image */
+    color: white; 
+    font-family:'myFirstFont', sans-serif;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.imageText2{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+}
+.imageText3{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
 }
 
 .images{
@@ -33,3 +53,7 @@ html, body{
 }
 
 /*Image Overlay classes*/
+
+
+
+
