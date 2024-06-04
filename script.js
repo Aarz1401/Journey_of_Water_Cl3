@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const sceneTitle = document.getElementById('scene-title');
     const buttonContainer = document.querySelector('.button-container');
     const nextButton = document.getElementById('next-button');
-    const prevButton = document.getElementById('previous-button');
+    const prevButton = document.getElementById('prev-button');
+    const loadingScreen = document.getElementById('loading-screen');
+    const videoContainer = document.querySelector('.video-container');
     let audioElement = null;
 
     const chapters = [
@@ -55,20 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     let currentChapter = 0;
-    
-    // Highlight the current button
-    function highlightCurrentButton(index) {
-        document.querySelectorAll('.chapter-button').forEach((button, idx) => {
-            if (idx === index ) { // Adjusting for 0-based index
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
-        });
-    }
 
     function updateChapter(index) {
-        if (index < 0 || index > chapters.length) return;
+        if (index < 0 || index >= chapters.length) return;
         currentChapter = index;
 
         const { video, audio, title } = chapters[index];
@@ -80,14 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update title
         sceneTitle.textContent = title;
-
-        //Update button container
-        if(currentChapter === 0){
-            buttonContainer.style.transform = 'translateY(10%)';
-        }
-        else{
-            buttonContainer.style.transform = 'translateY(0%)';
-        }
 
         // Show or hide restart button
         restartButton.style.display = index === 0 ? 'none' : 'block';
@@ -113,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         prevButton.style.display = index > 0 ? 'block' : 'none';
         progressBar.style.display = index > 0 ? 'block' : 'none';
 
-        //next Button special case
+        // Next Button special case
         if (index < chapters.length - 1) {
             nextButton.innerHTML = 'Next';
         } else {
@@ -130,9 +113,44 @@ document.addEventListener('DOMContentLoaded', function() {
         highlightCurrentButton(index);
     }
 
+    function highlightCurrentButton(index) {
+        document.querySelectorAll('.chapter-button').forEach((button, idx) => {
+            if (idx === index - 1) { // Adjusting for 0-based index
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+
+    function preloadVideos(videos, callback) {
+        let loadedCount = 0;
+        const totalVideos = videos.length;
+
+        videos.forEach((video, idx) => {
+            const videoElement = document.createElement('video');
+            videoElement.src = video.video;
+            videoElement.preload = 'auto';
+            videoElement.onloadeddata = () => {
+                loadedCount++;
+                console.log(`Video ${idx + 1} loaded (${loadedCount}/${totalVideos})`);
+                if (loadedCount === totalVideos) {
+                    callback();
+                }
+            };
+            videoElement.onerror = (error) => {
+                console.error(`Error loading video ${idx + 1}:`, error);
+                loadedCount++;
+                if (loadedCount === totalVideos) {
+                    callback();
+                }
+            };
+        });
+    }
+
     document.querySelectorAll('.chapter-button').forEach((button, index) => {
         button.addEventListener('click', function() {
-            updateChapter(index );
+            updateChapter(index + 1);
         });
     });
 
@@ -151,9 +169,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Initialize the first chapter
-    updateChapter(currentChapter);
+    // Preload all videos and hide the loading screen when done
+    preloadVideos(chapters, () => {
+        loadingScreen.style.display = 'none';
+        videoContainer.style.display = 'block';
+        updateChapter(currentChapter);
+    });
 });
+
 
 //For mouse cursor
 document.addEventListener('DOMContentLoaded', function() {
@@ -182,6 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseup', () => {
         cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
     });
+   
 });
 
 

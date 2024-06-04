@@ -7,13 +7,18 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <div class="video-container">
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+    
+    <div class="video-container" style="display: none;">
         <video id="video-element" autoplay muted loop>
             <source src="videos/Waves_Video.mp4" type="video/mp4">
         </video>
         <div class="overlay">
             <h1 id="scene-title" class="imageText1">The Journey of Water</h1>
-            <div class="progress-bar-container"  style="display:none">
+            <div class="progress-bar-container" style="display:none">
                 <div class="progress-bar"></div>
             </div>
             <div class="button-container">
@@ -24,14 +29,10 @@
                 <button class="chapter-button" data-video="videos/thunder.mp4" data-audio="audio/4_Adulthood.mp3" data-title="Chapter 4: Adulthood">Chapter 4</button>
                 <button class="chapter-button" data-video="videos/waterfall.mp4" data-audio="audio/5_Old_age.mp3" data-title="Chapter 5: Old Age">Chapter 5</button>
                 <button class="chapter-button" data-video="videos/clouds_floating.mp4" data-audio="audio/6_Renewal.mp3" data-title="Chapter 6: Renewal">Chapter 6</button>
-                
             </div>
-            <button id="next-button" class = "navigation-button" style="display:flex">Next</button>
-            <button id="previous-button" class = "navigation-button" style="display:none">Previous</button>
+            <button id="next-button" class="navigation-button" style="display:flex">Next</button>
+            <button id="prev-button" class="navigation-button" style="display:none">Previous</button>
             <button id="restart-audio" style="display:none;">Restart Audio</button>
-            <h2 style=" top:60%; left:50%; transform: translate(-50%,-50%); position:absolute;">A Water Soundscape</h2>
-            
-
         </div>
     </div>
 
