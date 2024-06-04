@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function highlightCurrentButton(index) {
         document.querySelectorAll('.chapter-button').forEach((button, idx) => {
-            if (idx === index - 1) { // Adjusting for 0-based index
+            if (idx === index ) { // Adjusting for 0-based index
                 button.classList.add('active');
             } else {
                 button.classList.remove('active');
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.chapter-button').forEach((button, index) => {
         button.addEventListener('click', function() {
-            updateChapter(index + 1);
+            updateChapter(index );
         });
     });
 
