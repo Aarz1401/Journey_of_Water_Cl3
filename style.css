@@ -3,7 +3,37 @@ html, body{
     margin: 0;
     padding: 0;
     font-family:'Montseirat', sans-serif;
+    
 }
+
+/* Custom Cursor */
+
+.custom-cursor {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(33, 179, 212, 0.41); /* Bluish color for the drop */
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: none; /* Initially hidden */
+    border-radius: 50%;
+}
+
+button:hover, a:hover {
+    cursor: none; /* Hide the default cursor */
+}
+
+button:hover ~ .custom-cursor, a:hover ~ .custom-cursor {
+    display: block; /* Show the custom cursor */
+    transform: translate(-50%, -50%) scale(1.2); /* Slightly enlarge the drop */
+}
+
+.custom-cursor:hover {
+    background-color: rgba(0, 0, 255, 0.7);
+}
+
 
 .mainContent{
     background:white;
@@ -64,10 +94,10 @@ html, body{
     height:20px;
     border-radius: 50px;
     background-color: #e0e0df;
-    display:none;
+    display:flex;
     top:90%;
-    position: relative;
-    left:3%;
+    position: absolute;
+    left:9%;
 }
 
 .progress-bar {
@@ -116,7 +146,7 @@ html, body{
 .button-container {
     top:100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 20px 0;
     position: relative;
     z-index: 999;
@@ -178,16 +208,19 @@ video {
 
 /*restart audio button*/
 #restart-audio {
-    margin-top: 20px;
     top:90%;
+    left:50%;
+    transform:translate(-50%,-30%);
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transform:translateY(1500%);
+    position:relative;
+    align-items: center;
 }
+
 
 #restart-audio:hover {
     background-color: rgba(0, 0, 0, 0.7);
@@ -199,9 +232,116 @@ video {
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
+    font-size:15px;
+    position:relative;
 }
 
 .chapter-button:hover {
     background-color: rgba(0, 0, 0, 0.7);
 }
+
+#next-button, #previous-button {
+    top: 50%;
+    padding: 10px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+#next-button::before {
+    content: '>';
+}
+
+#previous-button::before {
+    content: '<';
+}
+
+#next-button {
+    right: 20px;
+}
+
+#previous-button {
+    left: 20px;
+}
+
+#next-button:hover, #previous-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Footer */
+.fancy-footer {
+    background: black;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Ensure the wave effect stays within the footer */
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.footer-content a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+    color: #ffeb3b;
+}
+
+
+.chapter-button.active {
+    background: linear-gradient(to right, #4facfe 0%, #022b50 100%);
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*to ensure restart audio button is always seen*/
+@media (max-width: 800px) {
+    #restart-audio {
+        top:70%;
+        left:50%;
+        transform:translate(-50%,-30%);
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        position:relative;
+        align-items: center;
+    }
+    #next-button, #previous-button {
+        top: 50%;
+        padding: 10px;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+    }
+
+}
+

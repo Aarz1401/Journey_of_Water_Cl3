@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 </head>
-
 <body>
-   
     <div class="video-container">
         <video id="video-element" autoplay muted loop>
             <source src="videos/Waves_Video.mp4" type="video/mp4">
         </video>
         <div class="overlay">
-            <h1 id="scene-title" class ="imageText1">Water</h1>
-            <div class="progress-bar-container">
+            <h1 id="scene-title" class="imageText1">The Journey of Water</h1>
+            <div class="progress-bar-container"  style="display:none">
                 <div class="progress-bar"></div>
             </div>
-            <button id="restart-audio">Restart Audio</button>
             <div class="button-container">
+                <a href="index.html" class="chapter-button home">Home</a>
                 <button class="chapter-button" data-video="videos/falling_drop.mp4" data-audio="audio/1_Birth.mp3" data-title="Chapter 1: Birth">Chapter 1</button>
                 <button class="chapter-button" data-video="videos/Children_playing.mp4" data-audio="audio/2_Childhood.mp3" data-title="Chapter 2: Child">Chapter 2</button>
                 <button class="chapter-button" data-video="videos/river.mp4" data-audio="audio/3_Adolescence.mp3" data-title="Chapter 3: Adolescence">Chapter 3</button>
@@ -28,21 +26,25 @@
                 <button class="chapter-button" data-video="videos/clouds_floating.mp4" data-audio="audio/6_Renewal.mp3" data-title="Chapter 6: Renewal">Chapter 6</button>
                 
             </div>
-        </div>
+            <button id="next-button" class = "navigation-button" style="display:flex">Next</button>
+            <button id="previous-button" class = "navigation-button" style="display:none">Previous</button>
+            <button id="restart-audio" style="display:none;">Restart Audio</button>
+            <h2 style=" top:60%; left:50%; transform: translate(-50%,-50%); position:absolute;">A Water Soundscape</h2>
+            
 
+        </div>
     </div>
-    
-   
-   <!--- <div id="image-6" class="images" data-audio="audio/5_Peace.mp3">
-        <h1>Water</h1>
-        <div class="progress-bar-container">
-            <div class="progress-bar"></div>
+
+    <a href="index.html" class="back-home" style="display:none">Back to Home</a>
+
+    <footer class="fancy-footer">
+        <div class="footer-content">
+            <p>&copy; Summer 2024 , Comm Lab . All rights reserved.</p>
+            <p> 
+            Website and Audio created by Aadil, Abyan , Aayat and Hamdah
+            </p>
         </div>
-    </div>-->
-
- 
-    <a href="index.html" class="back-home">Back to Home</a>
-
+    </footer>
 
     <script src="script.js"></script>
 </body>

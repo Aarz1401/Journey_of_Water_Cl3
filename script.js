@@ -39,44 +39,152 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressBarContainer = document.querySelector('.progress-bar-container');
     const restartButton = document.getElementById('restart-audio');
     const sceneTitle = document.getElementById('scene-title');
+    const buttonContainer = document.querySelector('.button-container');
+    const nextButton = document.getElementById('next-button');
+    const prevButton = document.getElementById('previous-button');
     let audioElement = null;
 
-    document.querySelectorAll('.chapter-button').forEach(button => {
-        button.addEventListener('click', function() {
-            const videoSrc = this.getAttribute('data-video');
-            const audioSrc = this.getAttribute('data-audio');
-            const title = this.getAttribute('data-title');
+    const chapters = [
+        { video: 'videos/Waves_Video.mp4', audio: '', title: 'The Journey of Water' },
+        { video: 'videos/falling_drop.mp4', audio: 'audio/1_Birth.mp3', title: 'Chapter 1: Birth' },
+        { video: 'videos/Children_playing.mp4', audio: 'audio/2_Childhood.mp3', title: 'Chapter 2: Child' },
+        { video: 'videos/river.mp4', audio: 'audio/3_Adolescence.mp3', title: 'Chapter 3: Adolescence' },
+        { video: 'videos/thunder.mp4', audio: 'audio/4_Adulthood.mp3', title: 'Chapter 4: Adulthood' },
+        { video: 'videos/waterfall.mp4', audio: 'audio/5_Old_age.mp3', title: 'Chapter 5: Old Age' },
+        { video: 'videos/clouds_floating.mp4', audio: 'audio/6_Renewal.mp3', title: 'Chapter 6: Renewal' }
+    ];
 
-            // Update video source
-            videoElement.src = videoSrc;
-            videoElement.load();
-            videoElement.play();
-
-            // Update title
-            sceneTitle.textContent = title;
-
-            // Stop and update audio
-            if (audioElement) {
-                audioElement.pause();
-                audioElement = null;
+    let currentChapter = 0;
+    
+    // Highlight the current button
+    function highlightCurrentButton(index) {
+        document.querySelectorAll('.chapter-button').forEach((button, idx) => {
+            if (idx === index ) { // Adjusting for 0-based index
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
             }
+        });
+    }
 
-            audioElement = new Audio(audioSrc);
+    function updateChapter(index) {
+        if (index < 0 || index > chapters.length) return;
+        currentChapter = index;
+
+        const { video, audio, title } = chapters[index];
+
+        // Update video source
+        videoElement.src = video;
+        videoElement.load();
+        videoElement.play();
+
+        // Update title
+        sceneTitle.textContent = title;
+
+        //Update button container
+        if(currentChapter === 0){
+            buttonContainer.style.transform = 'translateY(10%)';
+        }
+        else{
+            buttonContainer.style.transform = 'translateY(0%)';
+        }
+
+        // Show or hide restart button
+        restartButton.style.display = index === 0 ? 'none' : 'block';
+
+        // Update audio
+        if (audioElement) {
+            audioElement.pause();
+            audioElement = null;
+        }
+        if (audio) {
+            audioElement = new Audio(audio);
             audioElement.play();
             progressBarContainer.style.display = 'block';
-
             audioElement.addEventListener('timeupdate', function() {
                 const progress = (audioElement.currentTime / audioElement.duration) * 100;
                 progressBar.style.width = progress + '%';
             });
+        } else {
+            progressBarContainer.style.display = 'none';
+        }
 
-            restartButton.addEventListener('click', function() {
-                audioElement.currentTime = 0;
-                audioElement.play();
-            });
+        // Update buttons visibility
+        prevButton.style.display = index > 0 ? 'block' : 'none';
+        progressBar.style.display = index > 0 ? 'block' : 'none';
+
+        //next Button special case
+        if (index < chapters.length - 1) {
+            nextButton.innerHTML = 'Next';
+        } else {
+            nextButton.innerHTML = '';
+            var anchor = document.createElement('a');
+            anchor.href = 'index.html';
+            anchor.textContent = 'Back to Home';
+            anchor.style.color = 'white';
+            anchor.style.textDecoration = 'none';
+            nextButton.appendChild(anchor);
+        }
+
+        // Highlight the current chapter button
+        highlightCurrentButton(index);
+    }
+
+    document.querySelectorAll('.chapter-button').forEach((button, index) => {
+        button.addEventListener('click', function() {
+            updateChapter(index );
         });
     });
+
+    nextButton.addEventListener('click', function() {
+        updateChapter(currentChapter + 1);
+    });
+
+    prevButton.addEventListener('click', function() {
+        updateChapter(currentChapter - 1);
+    });
+
+    restartButton.addEventListener('click', function() {
+        if (audioElement) {
+            audioElement.currentTime = 0;
+            audioElement.play();
+        }
+    });
+
+    // Initialize the first chapter
+    updateChapter(currentChapter);
 });
+
+//For mouse cursor
+document.addEventListener('DOMContentLoaded', function() {
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+    });
+
+    document.querySelectorAll('button, a').forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.style.display = 'block';
+        });
+        element.addEventListener('mouseleave', () => {
+            cursor.style.display = 'none';
+        });
+    });
+
+    document.addEventListener('mousedown', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(0.9)';
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
+    });
+});
+
+
 
 
 
