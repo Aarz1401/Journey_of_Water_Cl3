@@ -359,7 +359,7 @@ video {
         position:relative;
         align-items: center;
     }
-    #next-button, #previous-button {
+    #next-button, #prev-button {
         top: 50%;
         padding: 10px;
         position: absolute;
