@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('.images');
     let currentAudio = null;
     let currentProgressBar = null;
@@ -31,7 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         });
     });
-});
+});*/
 
+document.addEventListener("DOMContentLoaded", function() {
+    const audioElement = new Audio(document.querySelector('.overlay').getAttribute('data-audio'));
+    const progressBar = document.querySelector('.progress-bar');
+    audioElement.preload = 'auto';
+    audioElement.currentTime=0;
+    audioElement.play();
+
+    audioElement.addEventListener('timeupdate', function() {
+        const progress = (audioElement.currentTime / audioElement.duration) * 100;
+        progressBar.style.width = progress + '%';
+    });
+});
 
 

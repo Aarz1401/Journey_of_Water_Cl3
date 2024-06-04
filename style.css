@@ -46,11 +46,16 @@ html, body{
     position:relative;
     width: 100%;
     padding: 0;
-    background:url("img/water_image.jpg") no-repeat center center;
+    
     background-size: cover;
     height:100%;
     overflow:none;
 }
+
+#image-1{
+    background:url("img/water_image.jpg") no-repeat center center;
+}
+
 
 /*Progress Bar*/
 .progress-bar-container {
@@ -105,8 +110,64 @@ html, body{
     transform: translateX(-50%);
 }
 
+/*Styling for button*/
+* Button Container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
 
+.chapter-button {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    transition: background 0.3s, border-color 0.3s;
+}
 
+.chapter-button:hover {
+    background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
+    border-color: #00f2fe;
+}
 
+/*videos*/
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+.back-home {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.back-home:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
 
 
