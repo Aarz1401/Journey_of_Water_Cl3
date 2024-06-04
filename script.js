@@ -33,17 +33,51 @@
     });
 });*/
 
-document.addEventListener("DOMContentLoaded", function() {
-    const audioElement = new Audio(document.querySelector('.overlay').getAttribute('data-audio'));
+document.addEventListener('DOMContentLoaded', function() {
+    const videoElement = document.getElementById('video-element');
     const progressBar = document.querySelector('.progress-bar');
-    audioElement.preload = 'auto';
-    audioElement.currentTime=0;
-    audioElement.play();
+    const progressBarContainer = document.querySelector('.progress-bar-container');
+    const restartButton = document.getElementById('restart-audio');
+    const sceneTitle = document.getElementById('scene-title');
+    let audioElement = null;
 
-    audioElement.addEventListener('timeupdate', function() {
-        const progress = (audioElement.currentTime / audioElement.duration) * 100;
-        progressBar.style.width = progress + '%';
+    document.querySelectorAll('.chapter-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const videoSrc = this.getAttribute('data-video');
+            const audioSrc = this.getAttribute('data-audio');
+            const title = this.getAttribute('data-title');
+
+            // Update video source
+            videoElement.src = videoSrc;
+            videoElement.load();
+            videoElement.play();
+
+            // Update title
+            sceneTitle.textContent = title;
+
+            // Stop and update audio
+            if (audioElement) {
+                audioElement.pause();
+                audioElement = null;
+            }
+
+            audioElement = new Audio(audioSrc);
+            audioElement.play();
+            progressBarContainer.style.display = 'block';
+
+            audioElement.addEventListener('timeupdate', function() {
+                const progress = (audioElement.currentTime / audioElement.duration) * 100;
+                progressBar.style.width = progress + '%';
+            });
+
+            restartButton.addEventListener('click', function() {
+                audioElement.currentTime = 0;
+                audioElement.play();
+            });
+        });
     });
 });
+
+
 
 

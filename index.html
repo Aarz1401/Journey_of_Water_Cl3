@@ -8,16 +8,28 @@
 </head>
 
 <body>
-    <div id="image-1" class="images" data-audio="audio1.mp3">
-    </div> 
-    <div class="imageText1">
-        <h1>The Journey of Water</h1>
-    </div>
-    <div class="imageText2">
-        <h1>Heading 1</h1>
-    </div>
-    <div class="imageText3">
-        <h1>Heading 2</h1>
+   
+    <div class="video-container">
+        <video id="video-element" autoplay muted loop>
+            <source src="videos/Waves_Video.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">
+            <h1 id="scene-title" class ="imageText1">Water</h1>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+            <button id="restart-audio">Restart Audio</button>
+            <div class="button-container">
+                <button class="chapter-button" data-video="videos/falling_drop.mp4" data-audio="audio/1_Birth.mp3" data-title="Chapter 1: Birth">Chapter 1</button>
+                <button class="chapter-button" data-video="videos/Children_playing.mp4" data-audio="audio/2_Childhood.mp3" data-title="Chapter 2: Child">Chapter 2</button>
+                <button class="chapter-button" data-video="videos/river.mp4" data-audio="audio/3_Adolescence.mp3" data-title="Chapter 3: Adolescence">Chapter 3</button>
+                <button class="chapter-button" data-video="videos/thunder.mp4" data-audio="audio/4_Adulthood.mp3" data-title="Chapter 4: Adulthood">Chapter 4</button>
+                <button class="chapter-button" data-video="videos/waterfall.mp4" data-audio="audio/5_Old_age.mp3" data-title="Chapter 5: Old Age">Chapter 5</button>
+                <button class="chapter-button" data-video="videos/clouds_floating.mp4" data-audio="audio/6_Renewal.mp3" data-title="Chapter 6: Renewal">Chapter 6</button>
+                
+            </div>
+        </div>
+
     </div>
     
    
@@ -28,13 +40,9 @@
         </div>
     </div>-->
 
-    <div class="button-container">
-        <a href="image-2.html" class="chapter-button">Chapter 1</a>
-        <a href="image-3.html" class="chapter-button">Chapter 2</a>
-        <a href="image-4.html" class="chapter-button">Chapter 3</a>
-        <a href="image-5.html" class="chapter-button">Chapter 4</a>
-        <a href="image-6.html" class="chapter-button">Chapter 5</a>
-    </div>
+ 
+    <a href="index.html" class="back-home">Back to Home</a>
+
 
     <script src="script.js"></script>
 </body>

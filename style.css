@@ -12,7 +12,7 @@ html, body{
 /*Fonts*/
 @font-face {
     font-family: myFirstFont;
-    src: url(fonts/Artfully\ Regular.ttf);
+    src: url(fonts/Avenir\ Next.ttc);
   }
 
 .imageText1{
@@ -24,6 +24,7 @@ html, body{
     font-family:'myFirstFont', sans-serif;
     background-color: rgba(0, 0, 0, 0.5);
 }
+/*
 .imageText2{
     position: absolute;
     top: 10%;
@@ -55,7 +56,7 @@ html, body{
 #image-1{
     background:url("img/water_image.jpg") no-repeat center center;
 }
-
+*/
 
 /*Progress Bar*/
 .progress-bar-container {
@@ -113,9 +114,12 @@ html, body{
 /*Styling for button*/
 * Button Container */
 .button-container {
+    top:100%;
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
+    position: relative;
+    z-index: 999;
 }
 
 .chapter-button {
@@ -154,6 +158,8 @@ video {
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
+    width:100%;
+    height:100%;
 }
 .back-home {
     position: absolute;
@@ -170,4 +176,32 @@ video {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+/*restart audio button*/
+#restart-audio {
+    margin-top: 20px;
+    top:90%;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transform:translateY(1500%);
+}
 
+#restart-audio:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.chapter-button {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chapter-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
