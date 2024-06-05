@@ -84,7 +84,7 @@ button:hover ~ .custom-cursor, a:hover ~ .custom-cursor {
     font-family:'myFirstFont', sans-serif;
     background-color: rgba(0, 0, 0, 0.5);
 }
-/*
+
 .imageText2{
     position: absolute;
     top: 10%;
@@ -92,31 +92,7 @@ button:hover ~ .custom-cursor, a:hover ~ .custom-cursor {
     transform: translate(-50%, -50%);
     color: white; 
 }
-.imageText3{
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; 
-}
 
-.images{
-    margin-top:20px;
-    margin-bottom:20px;
-    display:flex;
-    position:relative;
-    width: 100%;
-    padding: 0;
-    
-    background-size: cover;
-    height:100%;
-    overflow:none;
-}
-
-#image-1{
-    background:url("img/water_image.jpg") no-repeat center center;
-}
-*/
 
 /*Progress Bar*/
 .progress-bar-container {
@@ -180,21 +156,6 @@ button:hover ~ .custom-cursor, a:hover ~ .custom-cursor {
     margin: 20px 0;
     position: relative;
     z-index: 999;
-}
-
-.chapter-button {
-    padding: 10px 20px;
-    text-decoration: none;
-    color: white;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    transition: background 0.3s, border-color 0.3s;
-}
-
-.chapter-button:hover {
-    background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
-    border-color: #00f2fe;
 }
 
 /*videos*/
@@ -274,17 +235,25 @@ video {
 
 .chapter-button {
     padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(150, 119, 119, 0.5);
     color: white;
     border: none;
     border-radius: 5px;
     font-size:15px;
     position:relative;
+    text-decoration: none;
 }
 
 
 .chapter-button:hover {
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+.chapter-button.active {
+    background: linear-gradient(to right, #4facfe 0%, #022b50 100%);
+    text-decoration:none;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #next-button, #prev-button {
@@ -354,12 +323,7 @@ video {
 }
 
 
-.chapter-button.active {
-    background: linear-gradient(to right, #4facfe 0%, #022b50 100%);
 
-    font-size: 20px;
-    font-weight: bold;
-}
 
 /*to ensure restart audio button is always seen*/
 @media (max-width: 800px) {
