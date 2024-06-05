@@ -165,13 +165,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     pauseButton.addEventListener('click', function() {
-        if (audioElement && pauseButton.innerHTML === 'Pause') {
+        if (audioElement && pauseButton.innerHTML === 'Pause Audio') {
             audioElement.pause();
-            audioElement.innerHTML = 'Play';
+            pauseButton.innerHTML = 'Play Audio';
         }
-        else if (audioElement && pauseButton.innerHTML === 'Play') {
+        else if (audioElement && pauseButton.innerHTML === 'Play Audio') {
             audioElement.play();
-            audioElement.innerHTML = 'Pause';
+            pauseButton.innerHTML = 'Pause Audio';
         }
     });
 
