@@ -238,8 +238,8 @@ video {
 
 /*restart audio button*/
 #restart-audio {
-    top:90%;
-    left:50%;
+    top:95%;
+    left:40%;
     transform:translate(-50%,-30%);
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -247,14 +247,30 @@ video {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    position:relative;
+    position:absolute;
     align-items: center;
 }
 
 
-#restart-audio:hover {
+#restart-audio:hover,#pause-audio:hover{
     background-color: rgba(0, 0, 0, 0.7);
 }
+
+/*pause button*/
+#pause-audio{
+    top:95%;
+    left:60%;
+    transform:translate(-50%,-20%);
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position:absolute;
+    align-items: center;
+}
+
 
 .chapter-button {
     padding: 10px 20px;
@@ -265,6 +281,7 @@ video {
     font-size:15px;
     position:relative;
 }
+
 
 .chapter-button:hover {
     background-color: rgba(0, 0, 0, 0.7);
@@ -347,6 +364,19 @@ video {
 /*to ensure restart audio button is always seen*/
 @media (max-width: 800px) {
     #restart-audio {
+        top:70%;
+        left:50%;
+        transform:translate(-50%,-30%);
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        position:relative;
+        align-items: center;
+    }
+    #pause-audio{
         top:70%;
         left:50%;
         transform:translate(-50%,-30%);

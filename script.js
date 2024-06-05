@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.getElementById('prev-button');
     const loadingScreen = document.getElementById('loading-screen');
     const videoContainer = document.querySelector('.video-container');
+    const pauseButton = document.getElementById('pause-audio');
     let audioElement = null;
 
     const chapters = [
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Show or hide restart button
         restartButton.style.display = index === 0 ? 'none' : 'block';
+        pauseButton.style.display = index === 0 ? 'none' : 'block';
 
         // Update audio
         if (audioElement) {
@@ -160,6 +162,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     prevButton.addEventListener('click', function() {
         updateChapter(currentChapter - 1);
+    });
+
+    pauseButton.addEventListener('click', function() {
+        if (audioElement && pauseButton.innerHTML === 'Pause') {
+            audioElement.pause();
+            audioElement.innerHTML = 'Play';
+        }
+        else if (audioElement && pauseButton.innerHTML === 'Play') {
+            audioElement.play();
+            audioElement.innerHTML = 'Pause';
+        }
     });
 
     restartButton.addEventListener('click', function() {
