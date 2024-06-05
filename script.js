@@ -1,6 +1,8 @@
 //Javascript to run when DOM content is loaded
 //Javascript for "Flow of Life" project
 //.js file created by Aadil Chasmawala, June 2024
+
+//This single functions has multiple functions to run the entire project (except customizing the mouse cursor which is handled in a seperate function).
 document.addEventListener('DOMContentLoaded', function() {
     // Get references to the elements
     const videoElement = document.getElementById('video-element');
@@ -86,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         highlightCurrentButton(index);
     }
 
+    // Function to highlight the current chapter button
     function highlightCurrentButton(index) {
         document.querySelectorAll('.chapter-button').forEach((button, idx) => {
             if (idx === index ) { // Adjusting for 0-based index
