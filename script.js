@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let audioElement = null;
 
     const chapters = [
-        { video: 'videos/Waves_Video.mp4', audio: '', title: 'The Journey of Water' },
+        { video: 'videos/Waves_Video.mp4', audio: '', title: 'The Flow of Life' },
         { video: 'videos/falling_drop.mp4', audio: 'audio/1_Birth.mp3', title: 'Chapter 1: Birth' },
         { video: 'videos/Children_playing.mp4', audio: 'audio/2_Childhood.mp3', title: 'Chapter 2: Child' },
         { video: 'videos/river.mp4', audio: 'audio/3_Adolescence.mp3', title: 'Chapter 3: Adolescence' },
