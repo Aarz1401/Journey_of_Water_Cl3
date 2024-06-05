@@ -1,39 +1,8 @@
-/*document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.images');
-    let currentAudio = null;
-    let currentProgressBar = null;
-
-    images.forEach(image => {
-        image.addEventListener('click', function() {
-            const audioFile = this.getAttribute('data-audio');
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-                if (currentProgressBar) {
-                    currentProgressBar.style.width = '0%';
-                    currentProgressBar.parentElement.style.display = 'none';
-                }
-            }
-
-            currentAudio = new Audio(audioFile);
-            currentProgressBar = this.querySelector('.progress-bar');
-            currentProgressBar.parentElement.style.display = 'block';
-
-            currentAudio.play();
-            currentAudio.ontimeupdate = function() {
-                const percentage = (currentAudio.currentTime / currentAudio.duration) * 100;
-                currentProgressBar.style.width = percentage + '%';
-            };
-
-            currentAudio.onended = function() {
-                currentProgressBar.style.width = '0%';
-                currentProgressBar.parentElement.style.display = 'none';
-            };
-        });
-    });
-});*/
-
+//Javascript to run when DOM content is loaded
+//Javascript for "Flow of Life" project
+//.js file created by Aadil Chasmawala, June 2024
 document.addEventListener('DOMContentLoaded', function() {
+    // Get references to the elements
     const videoElement = document.getElementById('video-element');
     const progressBar = document.querySelector('.progress-bar');
     const progressBarContainer = document.querySelector('.progress-bar-container');
@@ -47,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pauseButton = document.getElementById('pause-audio');
     let audioElement = null;
 
+    // Define the chapters
     const chapters = [
         { video: 'videos/Waves_Video.mp4', audio: '', title: 'The Flow of Life' },
         { video: 'videos/falling_drop.mp4', audio: 'audio/1_Birth.mp3', title: 'Chapter 1: Birth' },
@@ -59,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentChapter = 0;
 
+    // Function to update the current chapter
     function updateChapter(index) {
         if (index < 0 || index >= chapters.length) return;
         currentChapter = index;
@@ -124,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
+    //function to preload videos to prevent glitches
     function preloadVideos(videos, callback) {
         let loadedCount = 0;
         const totalVideos = videos.length;
@@ -150,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Add event listeners to buttons
     document.querySelectorAll('.chapter-button').forEach((button, index) => {
         button.addEventListener('click', function() {
             updateChapter(index );
@@ -191,17 +163,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//For mouse cursor
+
+//For Fancy mouse cursor
 document.addEventListener('DOMContentLoaded', function() {
     const cursor = document.createElement('div');
     cursor.classList.add('custom-cursor');
     document.body.appendChild(cursor);
 
+    // Add event listeners to update cursor position
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = `${e.clientX}px`;
         cursor.style.top = `${e.clientY}px`;
     });
 
+    // Add event listeners to show/hide cursor
     document.querySelectorAll('button, a').forEach(element => {
         element.addEventListener('mouseenter', () => {
             cursor.style.display = 'block';
@@ -211,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Add event listeners to change cursor scale
     document.addEventListener('mousedown', () => {
         cursor.style.transform = 'translate(-50%, -50%) scale(0.9)';
     });

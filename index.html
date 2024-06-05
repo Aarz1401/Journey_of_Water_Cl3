@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Created by Aadil Chasmawala , June 2024-->
 <html>
 <head>
     <title>The Flow of Life</title>
@@ -7,20 +8,23 @@
     <meta charset="utf-8">
 </head>
 <body>
+    <!--Loading Screen Div-->
     <div id="loading-screen" class="loading-screen">
         <div class="spinner"></div>
         <p>Loading...</p>
     </div>
     
+     <!--Video Container Div-->
     <div class="video-container" style="display: none;">
         <video id="video-element" autoplay muted loop>
             <source src="videos/Waves_Video.mp4" type="video/mp4">
         </video>
         <div class="overlay">
-            <h1 id="scene-title" class="imageText1">The Flow of Life <br> A Story of how water correlates with life</h1>
+            <h1 id="scene-title" class="imageText1">The Flow of Life <br> A Story of how water correlates with life</h1> 
             <div class="progress-bar-container" style="display:none">
                 <div class="progress-bar"></div>
             </div>
+             <!--Button Container Div ONLY for chapter buttons-->
             <div class="button-container">
                 <a href="index.html" class="chapter-button home">Home</a>
                 <button class="chapter-button" data-video="videos/falling_drop.mp4" data-audio="audio/1_Birth.mp3" data-title="Chapter 1: Birth">Chapter 1</button>
@@ -30,15 +34,17 @@
                 <button class="chapter-button" data-video="videos/waterfall.mp4" data-audio="audio/5_Old_age.mp3" data-title="Chapter 5: Old Age">Chapter 5</button>
                 <button class="chapter-button" data-video="videos/clouds_floating.mp4" data-audio="audio/6_Renewal.mp3" data-title="Chapter 6: Renewal">Chapter 6</button>
             </div>
+            <!-- navigation buttons-->
             <button id="next-button" class="navigation-button" style="display:flex">Next</button>
             <button id="prev-button" class="navigation-button" style="display:none">Previous</button>
             <button id="restart-audio" style="display:none;">Restart Audio</button>
             <button id="pause-audio" style="display:none;">Pause Audio</button>
         </div>
     </div>
-
+    <!--Bak to home link-->
     <a href="index.html" class="back-home" style="display:none">Back to Home</a>
 
+    <!--Footer-->
     <footer class="fancy-footer">
         <div class="footer-content">
             <p>&copy; Summer 2024 , Comm Lab . All rights reserved.</p>

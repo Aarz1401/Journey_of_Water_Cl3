@@ -1,3 +1,5 @@
+/*Aadil Abbasi Chasmawala, June 2024*/
+/* General styles */
 html, body{
     height: 100%;
     margin: 0;
@@ -5,7 +7,7 @@ html, body{
     font-family:'Montseirat', sans-serif;
     
 }
-/*Loading screen*/
+
 
 /* Loading screen styles */
 .loading-screen {
@@ -36,8 +38,8 @@ html, body{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-/* Custom Cursor */
 
+/* Custom Cursor */
 .custom-cursor {
     position: fixed;
     width: 50px;
@@ -74,6 +76,8 @@ button:hover ~ .custom-cursor, a:hover ~ .custom-cursor {
     font-family: myFirstFont;
     src: url(fonts/Avenir\ Next.ttc);
   }
+
+/*Text Styles*/
 
 .imageText1{
     position: absolute;
@@ -116,8 +120,9 @@ button:hover ~ .custom-cursor, a:hover ~ .custom-cursor {
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/*CSS for scrollbar*/
-/* Custom Scrollbar */
+/*CSS for scrollbar
+- Custom Scrollbar */
+
 ::-webkit-scrollbar {
     width: 16px; /* Width of the scrollbar */
 }
@@ -146,18 +151,6 @@ button:hover ~ .custom-cursor, a:hover ~ .custom-cursor {
     border-radius: 50%;
     transform: translateX(-50%);
 }
-
-/*Styling for button*/
-* Button Container */
-.button-container {
-    top:100%;
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    position: relative;
-    z-index: 999;
-}
-
 /*videos*/
 .video-container {
     position: relative;
@@ -172,6 +165,7 @@ video {
     object-fit: cover;
 }
 
+/*Video Overlay*/
 .overlay {
     position: absolute;
     top: 50%;
@@ -182,6 +176,18 @@ video {
     width:100%;
     height:100%;
 }
+
+/*Styling for button*/
+.button-container {
+    top:100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+    z-index: 999;
+}
+
+/*Back-home button*/
 .back-home {
     position: absolute;
     bottom: 20px;
@@ -232,7 +238,7 @@ video {
     align-items: center;
 }
 
-
+/*Chapter buttons at top*/
 .chapter-button {
     padding: 10px 20px;
     background-color: rgba(150, 119, 119, 0.5);
@@ -256,6 +262,7 @@ video {
     font-weight: bold;
 }
 
+/*Next and Previous buttons*/
 #next-button, #prev-button {
     top: 50%;
     padding: 10px;
@@ -322,10 +329,7 @@ video {
     color: #ffeb3b;
 }
 
-
-
-
-/*to ensure restart audio button is always seen*/
+/*to ensure buttons are always seen and adjust layout for smaller ports*/
 @media (max-width: 800px) {
     #restart-audio {
         top:70%;
