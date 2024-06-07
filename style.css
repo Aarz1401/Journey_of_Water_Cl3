@@ -179,11 +179,10 @@ video {
 
 /*Styling for button*/
 .button-container {
+
     top:100%;
     display: flex;
     justify-content: center;
-    margin: 20px 0;
-    position: relative;
     z-index: 999;
 }
 
